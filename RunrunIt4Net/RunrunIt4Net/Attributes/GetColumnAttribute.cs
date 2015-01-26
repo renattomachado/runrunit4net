@@ -3,7 +3,7 @@
 namespace RunrunIt4Net.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class GetColumn : Attribute
+    public class GetColumnAttribute : Attribute
     {
     }
 }

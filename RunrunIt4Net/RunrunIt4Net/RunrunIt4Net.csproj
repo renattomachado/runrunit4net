@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Attributes\PostColumn.cs" />
-    <Compile Include="Attributes\GetColumn.cs" />
+    <Compile Include="Attributes\RequiredColumnAttribute.cs" />
+    <Compile Include="Attributes\PostColumnAttribute.cs" />
+    <Compile Include="Attributes\GetColumnAttribute.cs" />
     <Compile Include="Converter\RunrunitSerializeEntityResolver.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Project.cs" />

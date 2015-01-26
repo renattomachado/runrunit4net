@@ -3,8 +3,7 @@
 namespace RunrunIt4Net.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    
-    public class PostColumn : Attribute
+    public class RequiredColumnAttribute : Attribute
     {
     }
 }

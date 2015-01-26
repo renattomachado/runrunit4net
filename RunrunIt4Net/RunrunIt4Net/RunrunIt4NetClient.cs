@@ -67,9 +67,9 @@ namespace RunrunIt4Net
 
         public bool Post<T>(T obj)
         {
-            var ver = JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings(){ContractResolver = new RunrunitSerializeEntityResolver(new PostColumn())});
+            var jsonSend = JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings(){ContractResolver = new RunrunitSerializeEntityResolver(new PostColumnAttribute())});
             
-            var result = Client.PostAsync(typeof(T).Name.ToLower(), new StringContent(JsonConvert.SerializeObject(obj, Formatting.Indented, new VersionConverter())));
+            var result = Client.PostAsync(typeof(T).Name.ToLower(), new StringContent(jsonSend));
             return true;
         }
 
