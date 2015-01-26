@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using RunrunIt4Net.Attributes;
+using RunrunIt4Net.Converter;
 using RunrunIt4Net.Entities;
 
 namespace RunrunIt4Net
@@ -54,6 +58,21 @@ namespace RunrunIt4Net
             return JsonConvert.DeserializeObject<IEnumerable<T>>(retorno);
         }
 
+        public T GetById<T>(int id)
+        {
+            
+            var retorno = Client.GetStringAsync(string.Format("{0}/{1}", typeof(T).Name.ToLower() + "s", id)).Result;
+            return JsonConvert.DeserializeObject<T>(retorno);
+        }
+
+        public bool Post<T>(T obj)
+        {
+            var ver = JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings(){ContractResolver = new RunrunitSerializeEntityResolver(new PostColumn())});
+            
+            var result = Client.PostAsync(typeof(T).Name.ToLower(), new StringContent(JsonConvert.SerializeObject(obj, Formatting.Indented, new VersionConverter())));
+            return true;
+        }
+
         #endregion
 
         #endregion
@@ -63,10 +82,6 @@ namespace RunrunIt4Net
             Client.Dispose();
         }
 
-        public T GetById<T>(int id)
-        {
-            var retorno = Client.GetStringAsync(string.Format("{0}/{1}",typeof(T).Name.ToLower() + "s", id)).Result;
-            return JsonConvert.DeserializeObject<T>(retorno);
-        }
+        
     }
 }

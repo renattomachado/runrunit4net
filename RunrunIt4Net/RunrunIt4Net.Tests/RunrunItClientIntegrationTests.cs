@@ -29,7 +29,7 @@ namespace RunrunIt4Net.Tests
             };
             _handler.Proxy.Credentials = new NetworkCredential("ProxyUser", "ProxyPassword");
 
-            RunrunIt4NetClient _client = new RunrunIt4NetClient(Appkey, UserToken, _handler);
+            _client = new RunrunIt4NetClient(Appkey, UserToken, _handler);
         }
 
         [TestMethod]
@@ -62,6 +62,8 @@ namespace RunrunIt4Net.Tests
         {
             //arrange
             var client = new Client();
+
+            var res = _client.Post(client);
 
         }
 
