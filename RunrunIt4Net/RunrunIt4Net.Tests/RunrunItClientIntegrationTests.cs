@@ -61,10 +61,13 @@ namespace RunrunIt4Net.Tests
         public void CreateClient()
         {
             //arrange
-            var client = new Client();
+            var client = new Client(){Name = "Name of Client"};
 
-            var res = _client.Post(client);
+            //act
+            var result = _client.Post(client);
 
+            //assert
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]

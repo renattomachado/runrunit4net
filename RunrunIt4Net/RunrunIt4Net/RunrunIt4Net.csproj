@@ -36,9 +36,11 @@
     <Compile Include="Attributes\RequiredColumnAttribute.cs" />
     <Compile Include="Attributes\PostColumnAttribute.cs" />
     <Compile Include="Attributes\GetColumnAttribute.cs" />
+    <Compile Include="Converter\NullableValueProvider.cs" />
     <Compile Include="Converter\RunrunitSerializeEntityResolver.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Enum\RequestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunrunIt4NetClient.cs" />
   </ItemGroup>
